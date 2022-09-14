@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Join the Party - Geospatial Rust</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded affix "><li class="part-title">Lessons</li><li class="chapter-item expanded "><a href="youre-projecting.html"><strong aria-hidden="true">2.</strong> You're Projecting</a></li><li class="chapter-item expanded "><a href="feature-creek.html"><strong aria-hidden="true">3.</strong> Feature Creek</a></li><li class="chapter-item expanded "><a href="join-the-party.html" class="active"><strong aria-hidden="true">4.</strong> Join the Party</a></li><li class="chapter-item expanded affix "><li class="part-title">About This Book</li><li class="chapter-item expanded "><a href="contact.html"><strong aria-hidden="true">5.</strong> Contact the Authors</a></li><li class="chapter-item expanded "><a href="license.html"><strong aria-hidden="true">6.</strong> License</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Geospatial Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="join-the-party"><a class="header" href="#join-the-party">Join the Party</a></h1>
+<p>Imagine living in New York City. Good pizza, Broadway, and one of the US’s best collections of <a href="https://data.ny.gov/">open data</a> have never felt closer to home. Other than pizza, what really makes a city great though, are the people who live there. Think about the people who help fill the blank spaces in your life. The shape of each relationship is usually a little different, but it’s almost always possible to find some common ground. In this New York City life of our imagination, let’s imagine some of the <a href="https://en.wikipedia.org/wiki/Friends">Friends</a> we’d like to spend time with, and start to think about where we could all hang out.</p>
+<p><img src="images/nyc-friends.jpg" alt="A scene from the Friends television show, with everyone inside the crowded Central Perk cafe" />
+<span class="photo-credit">Courtesy NBC</span></p>
+<h2 id="drink-from-the-firehose"><a class="header" href="#drink-from-the-firehose">Drink from the Firehose</a></h2>
+<p>That cafe looks a bit stuffy and a bit dated. Let’s embrace the timeless joy of the great outdoors and look at a list of parks in the city — because even if the weather is bad, your friends will still be there for you (when the rain starts to pour). Somewhere in these shaded shapes, we can see the faint outline of a party beginning to form:</p>
+<p><img src="images/nyc-parks.png" alt="The 2029 parks of New York City" /></p>
+<p>Fortunately for us, we also have a list of every public drinking fountain that will let us sip some of NYC’s <a href="https://www1.nyc.gov/site/greenyc/take-action/drink-tap-water.page">“world-renowned”</a> tap water whenever the conversation starts to feel a little dry:</p>
+<p><img src="images/nyc-water-fountains.png" alt="The 3120 drinking fountains of New York City" /></p>
+<h2 id="filtered-water"><a class="header" href="#filtered-water">Filtered Water</a></h2>
+<p>Solving spatial problems often involves setting up a sort of <a href="https://en.wikipedia.org/wiki/Meet_cute">meet cute</a> scenario between different data sources. Similar to the will-they-or-won’t-they dynamic between Rachel and Ross, we have our own relationship (between drinking fountains and parks) that we need to explore. Let’s see how many of these parks contain at least one of these drinking fountains.</p>
+<header class="codeblock-header">Count MultiPolygons That Contain at Least One Point</header>
+<pre><code class="language-rust">use geojson::de::deserialize_features_from_feature_collection;
+use geo::algorithm::Contains;
+
+// a simple helper to open a file reader
+fn reader(filename: &amp;str) -&gt; std::io::BufReader&lt;std::fs::File&gt; {
+  let path = format!(&quot;src/data/nyc/{filename}&quot;);
+  std::io::BufReader::new(std::fs::File::open(path).expect(&quot;file path must be valid&quot;))
+}
+
+let parks: Vec&lt;geo::MultiPolygon&gt; = deserialize_features_from_feature_collection(reader(&quot;parks.geojson&quot;))
+    .map(|park_result: geojson::Result&lt;geojson::Feature&gt;| {
+      let park_feature = park_result.expect(&quot;valid feature&quot;);
+      geo::MultiPolygon::try_from(park_feature).expect(&quot;valid conversion&quot;)
+    })
+    .collect();
+
+let fountains: Vec&lt;geo::Point&gt; = deserialize_features_from_feature_collection(reader(&quot;drinking_fountains.geojson&quot;))
+    .map(|feature_result: geojson::Result&lt;geojson::Feature&gt;| {
+      let feature = feature_result.expect(&quot;valid Feature&quot;);
+      geo::Point::try_from(feature).expect(&quot;valid conversion&quot;)
+    }).collect();
+
+let mut parks_with_fountains = 0;
+for park in &amp;parks {
+  for fountain in &amp;fountains {
+    if park.contains(fountain) {
+      parks_with_fountains += 1;
+      break;
+    }
+  }
+}
+
+assert_eq!(parks_with_fountains, 902);
+
+let parks_without_fountains = parks.len() - parks_with_fountains;
+assert_eq!(parks_without_fountains, 1127);
+</code></pre>
+<p>A little less than half of NYC’s parks have drinking fountains. Good to know!</p>
+<h2 id="thirst-for-knowledge"><a class="header" href="#thirst-for-knowledge">Thirst for Knowledge</a></h2>
+<p>Counting is simple, but oftentimes we will need to do something more complex like taking certain attributes from one data source and combining those attributes with another data source based on their spatial relationship.</p>
+<p>Let’s look at some selected data from two data sources:</p>
+<p><strong>List of Parks (Same As Above)</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>park_name</th><th>park_shape</th></tr></thead><tbody>
+<tr><td>Gilbert Ramirez Park</td><td><code>MULTIPOLYGON(((-73.93418260...</code></td></tr>
+<tr><td>Spargo Park</td><td><code>MULTIPOLYGON(((-73.89721950...</code></td></tr>
+<tr><td>Turtle Playground</td><td><code>MULTIPOLYGON(((-73.82693385...</code></td></tr>
+<tr><td>…</td><td>…</td></tr>
+</tbody></table>
+</div>
+<p><strong>The Five Boroughs</strong></p>
+<p><img src="images/nyc-boroughs.png" alt="The five boroughs of New York City" /></p>
+<div class="table-wrapper"><table><thead><tr><th>borough_name</th><th>borough_shape</th></tr></thead><tbody>
+<tr><td>Brooklyn</td><td><code>MULTIPOLYGON(((-73.86327...)</code></td></tr>
+<tr><td>Queens</td><td><code>MULTIPOLYGON(((-73.82644...)</code></td></tr>
+<tr><td>…</td><td>…</td></tr>
+</tbody></table>
+</div>
+<p>It’s truncated in the tables above, but the park and borough data sources include detailed shape information. The smaller shapes of each <em>park</em> can be positioned within the larger shapes that comprise each <em>borough</em>. Because our friends live in different areas, a list like this could really help us narrow down where we want to get together:</p>
+<blockquote>
+<ul>
+<li>Option 1: Gilbert Ramirez Park in Brooklyn</li>
+<li>Option 2: Spargo Park in Queens</li>
+<li>Option 3: Turtle Playground in Queens</li>
+<li>…</li>
+</ul>
+</blockquote>
+<p>In order to produce a list like this, we need to combine the park name from the first data source with the borough that contains it from the second data source.</p>
+<p>If you’ve worked with SQL before, you might be thinking that this sounds a bit like a <a href="https://en.wikipedia.org/wiki/Join_(SQL)">JOIN clause</a>, and you’ll no doubt be delighted to know that this kind of operation is indeed referred to as a <em>spatial join</em>. If you’ve never worked with SQL before, don’t worry, you have an even bigger reason to be delighted.</p>
+<p>Let’s start building a list of venues by combining each park with the name of the borough that the park is in.</p>
+<header class="codeblock-header">Combining Attributes From Multiple Features</header>
+<pre><code class="language-rust"><span class="boring">use geo::geometry::{MultiPolygon, Point};
+</span><span class="boring">use geo::algorithm::Intersects;
+</span><span class="boring">
+</span><span class="boring">use geojson::de::{deserialize_feature_collection_to_vec, deserialize_geometry};
+</span><span class="boring">
+</span><span class="boring">fn reader(filename: &amp;str) -&gt; std::io::BufReader&lt;std::fs::File&gt; {
+</span><span class="boring">  let path = format!(&quot;src/data/nyc/{filename}&quot;);
+</span><span class="boring">  std::io::BufReader::new(std::fs::File::open(path).expect(&quot;file path must be valid&quot;))
+</span><span class="boring">}
+</span>
+// Using what we learned in the previous section on Features, we'll
+// deserialize the input GeoJSON into structs using serde.
+
+// First Input
+#[derive(serde::Deserialize)]
+struct Park {
+  #[serde(deserialize_with=&quot;deserialize_geometry&quot;)]
+  geometry: geo::MultiPolygon,
+
+  #[serde(rename=&quot;signname&quot;)]
+  name: String
+}
+
+let parks = deserialize_feature_collection_to_vec::&lt;Park&gt;(reader(&quot;parks.geojson&quot;)).expect(&quot;valid geojson&quot;);
+
+// Second Input
+#[derive(serde::Deserialize)]
+struct Borough {
+  #[serde(deserialize_with=&quot;deserialize_geometry&quot;)]
+  geometry: geo::MultiPolygon,
+
+  #[serde(rename=&quot;boro_name&quot;)]
+  name: String
+}
+
+let boroughs = deserialize_feature_collection_to_vec::&lt;Borough&gt;(reader(&quot;boroughs.geojson&quot;)).expect(&quot;valid geojson&quot;);
+
+// Output
+struct PartyVenue {
+  park_geometry: MultiPolygon,
+  park_name: String,
+  borough_name: String,
+}
+
+let mut venues: Vec&lt;PartyVenue&gt; = Vec::new();
+
+for park in &amp;parks {
+  for borough in &amp;boroughs {
+    if borough.geometry.intersects(&amp;park.geometry) {
+      let venue = PartyVenue {
+        park_name: park.name.clone(),
+        park_geometry: park.geometry.clone(),
+        borough_name: borough.name.clone(),
+      };
+      venues.push(venue);
+      break;
+    }
+  }
+}
+
+let first_venue = &amp;venues[0];
+assert_eq!(first_venue.park_name, &quot;Devoe Park&quot;);
+assert_eq!(first_venue.borough_name, &quot;Bronx&quot;);
+
+<span class="boring">// There's one phantom park in the data set that's outside of any borough boundaries — Wild!
+</span><span class="boring">assert_eq!(venues.len(), parks.len() - 1);
+</span></code></pre>
+<p>We’ve produced a list of parks spatially joined to their borough name, but it’s a huge list of options. How can we refine this list to surface only the best places?</p>
+<h2 id="water-cooler"><a class="header" href="#water-cooler">Water, Cooler</a></h2>
+<p>If <a href="https://www.nycgovparks.org/parks/central-park">Central Park</a> is as mainstream as it gets, which open spaces are more like the avant-garde Vapor Wave Jazz that your hipster friends just can’t get enough of these days? Let’s augment our earlier code to filter out the mainstream (largest) parks, while still ensuring we’ll be able to get a drink of New York’s finest (water).</p>
+<p>We want to produce something like this:</p>
+<div class="table-wrapper"><table><thead><tr><th>park</th><th>borough</th><th>fountains</th><th>square_meters</th></tr></thead><tbody>
+<tr><td>Tiny Town</td><td>Queens</td><td>2</td><td>100</td></tr>
+<tr><td>Polly Pocket Park</td><td>Brooklyn</td><td>3</td><td>200</td></tr>
+<tr><td>Honey I Shrunk the Esplanade</td><td>Bronx</td><td>1</td><td>300</td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+</tbody></table>
+</div><header class="codeblock-header">Combining Attributes From Multiple Features and Filtering the Result</header>
+<pre><code class="language-rust"><span class="boring">use geo::geometry::{MultiPolygon, MultiPoint, Point};
+</span><span class="boring">use geo::algorithm::{Area, Contains, Intersects};
+</span><span class="boring">
+</span><span class="boring">use geojson::de::{deserialize_feature_collection_to_vec, deserialize_feature_collection, deserialize_features_from_feature_collection, deserialize_geometry};
+</span><span class="boring">
+</span><span class="boring">fn reader(filename: &amp;str) -&gt; std::io::BufReader&lt;std::fs::File&gt; {
+</span><span class="boring">  let path = format!(&quot;src/data/nyc/{filename}&quot;);
+</span><span class="boring">  std::io::BufReader::new(std::fs::File::open(path).expect(&quot;file path must be valid&quot;))
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">// First Input
+</span><span class="boring">#[derive(serde::Deserialize, Debug)]
+</span><span class="boring">struct Park {
+</span><span class="boring">  #[serde(deserialize_with=&quot;deserialize_geometry&quot;)]
+</span><span class="boring">  geometry: geo::MultiPolygon,
+</span><span class="boring">
+</span><span class="boring">  #[serde(rename=&quot;signname&quot;)]
+</span><span class="boring">  name: String
+</span><span class="boring">}
+</span><span class="boring">let parks = deserialize_feature_collection_to_vec::&lt;Park&gt;(reader(&quot;parks.geojson&quot;)).expect(&quot;valid geojson&quot;);
+</span><span class="boring">
+</span><span class="boring">// Second Input
+</span><span class="boring">#[derive(serde::Deserialize)]
+</span><span class="boring">struct Borough {
+</span><span class="boring">  #[serde(deserialize_with=&quot;deserialize_geometry&quot;)]
+</span><span class="boring">  geometry: geo::MultiPolygon,
+</span><span class="boring">
+</span><span class="boring">  #[serde(rename=&quot;boro_name&quot;)]
+</span><span class="boring">  name: String
+</span><span class="boring">}
+</span><span class="boring">let boroughs = deserialize_feature_collection_to_vec::&lt;Borough&gt;(reader(&quot;boroughs.geojson&quot;)).expect(&quot;valid geojson&quot;);
+</span><span class="boring">
+</span>// Output
+struct PartyVenue {
+  park: String,
+  borough: String,
+  geometry: MultiPolygon,
+  square_meters: f64,
+  fountains: usize,
+}
+
+let mut venues: Vec&lt;PartyVenue&gt; = Vec::new();
+for park in &amp;parks {
+  for borough in &amp;boroughs {
+    if borough.geometry.intersects(&amp;park.geometry) {
+      use proj::Transform;
+      // Project the geometry in order to calculate a useful area.
+      // See our first section for more on projections.
+      //
+      // EPSG:32115 - New York Eastern (meters)
+      let square_meters = park.geometry
+        .transformed_crs_to_crs(&quot;WGS84&quot;, &quot;EPSG:32115&quot;)
+        .expect(&quot;valid projection&quot;)
+        .unsigned_area();
+
+      let venue = PartyVenue {
+        park: park.name.clone(),
+        borough: borough.name.clone(),
+        geometry: park.geometry.clone(),
+        square_meters,
+        fountains: 0, // we'll populate this field later
+      };
+      venues.push(venue);
+      break;
+    }
+  }
+}
+
+let fountains: Vec&lt;geo::Point&gt; = deserialize_features_from_feature_collection(reader(&quot;drinking_fountains.geojson&quot;))
+    .map(|feature_result: geojson::Result&lt;geojson::Feature&gt;| {
+      let feature = feature_result.expect(&quot;valid Feature&quot;);
+      geo::Point::try_from(feature).expect(&quot;valid conversion&quot;)
+    }).collect();
+
+for fountain in &amp;fountains {
+  for venue in &amp;mut venues {
+    if venue.geometry.contains(fountain) {
+      venue.fountains += 1;
+      break;
+    }
+  }
+}
+
+// We're only interested in parks that have at least one water fountain
+venues = venues.into_iter().filter(|venue| venue.fountains &gt; 0).collect();
+
+// Sort by the size of the park
+venues.sort_by(|venue_1, venue_2| venue_1.square_meters.partial_cmp(&amp;venue_2.square_meters).expect(&quot;valid floating point comparison&quot;));
+
+let tiniest_venue = venues.first().unwrap();
+assert_eq!(tiniest_venue.park, &quot;Glendale Veterans Triangle&quot;);
+assert_eq!(tiniest_venue.borough, &quot;Queens&quot;);
+approx::assert_relative_eq!(tiniest_venue.square_meters, 26.263444242984757, max_relative = 1e-5);
+assert_eq!(tiniest_venue.fountains, 1);
+
+<span class="boring">let largest_venue = venues.last().unwrap();
+</span><span class="boring">assert_eq!(largest_venue.park, &quot;Pelham Bay Park&quot;);
+</span><span class="boring">assert_eq!(largest_venue.borough, &quot;Bronx&quot;);
+</span><span class="boring">approx::assert_relative_eq!(largest_venue.square_meters, 10835186.669072341, max_relative = 1e-5);
+</span><span class="boring">assert_eq!(largest_venue.fountains, 43);
+</span></code></pre>
+<p>We have found some excellent candidates for a tiny party venue, the tiniest of all being the pint-sized <a href="https://www.nycgovparks.org/parks/glendale-veterans-triangle/monuments/589">Glendale Veterans Triangle</a> in Queens.</p>
+<div class="side-by-side">
+  <img src="images/nyc-glendale-veterans-triangle-park.jpg" />
+  <img src="images/nyc-glendale-veterans-triangle-drinking-fountain.jpg" />
+</div>
+<p>These off the beaten path parks will let us spend hours of quality time with our friends, all while staying hydrated. What more could you possibly ask for on a lazy day in New York City?</p>
+<h2 id="drowning-in-data"><a class="header" href="#drowning-in-data">Drowning in Data</a></h2>
+<p>One thing you could definitely ask for are quicker results. The code above works, but it’s really quite slow! Until now we’ve basically brute forced our solutions without much consideration for speed. We can sort of justify our laissez-faire approach to CPU usage for one-off calculations like this, but speed will become increasingly important as our data sets grow larger and processing gets more complicated, or if results need to be recomputed more frequently.</p>
+<p>Generally speaking, Rust is “real fast”, but that’s not the whole story. Let’s say you’re trying to get to <a href="https://en.wikipedia.org/wiki/Sugar_Hill,_Manhattan">Harlem</a> in a hurry. If you happen to be <a href="https://en.wikipedia.org/wiki/Tatyana_McFadden">Tatyana McFadden</a>, five-time winner and course record holder for the New York City Marathon women’s weelchair division, you’d do all right. Alternatively, you could just recall that Duke Ellington tune and <a href="https://www.youtube.com/watch?v=1ggcQk67Mco&amp;t=86s">take the A train</a>. With Rust’s natural affinity for speed as a baseline, applying some problem-specific know-how can get us where we’re going without breaking a sweat.</p>
+<p>In an upcoming lesson, we’ll explore some of these tricks of the trade to speed up common geospatial operations. Quickly moving through the real world may require a jet engine, but that doesn’t mean that your laptop needs to sound like one. If you’d like to be notified when it’s up, <a href="./contact.html">send us a note</a>, or subscribe to our <a href="rss.xml">rss feed</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="feature-creek.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="contact.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="feature-creek.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="contact.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
